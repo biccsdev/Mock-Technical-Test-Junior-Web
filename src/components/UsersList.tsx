@@ -59,17 +59,18 @@ export function UsersList({
           const color = showColors ? backgroundColor : "transparent";
           return (
             <tr
-              onClick={() => handleRowClick(item)}
               className="highlight-row"
               key={item.email}
               style={{ backgroundColor: color }}
             >
-              <td>
+              <td onClick={() => handleRowClick(item)}>
                 <img src={item.picture.thumbnail}></img>
               </td>
-              <td>{item.name.first}</td>
-              <td>{item.name.last}</td>
-              <td>{item.location.country}</td>
+              <td onClick={() => handleRowClick(item)}>{item.name.first}</td>
+              <td onClick={() => handleRowClick(item)}>{item.name.last}</td>
+              <td onClick={() => handleRowClick(item)}>
+                {item.location.country}
+              </td>
               <td>
                 <button
                   className="button"
