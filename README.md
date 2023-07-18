@@ -5,6 +5,28 @@
 This is a mock test.
 The objective of this technical test is to create an application using the provided API: https://randomuser.me/
 
+![Recording 2023-07-17 165350](https://github.com/biccsdev/Mock-Technical-Test-Junior-Web/assets/86041666/32f38301-3fd1-44e3-8dff-7d6d821fd073)
+
+## Instalation
+
+1. Clone the repo
+
+```
+git clone git@github.com:biccsdev/Mock-Technical-Test-Junior-Web.git
+```
+
+2. Install dependencies
+
+```
+npm install
+```
+
+3. Run
+
+```
+npm run dev
+```
+
 ## Requirements
 
 - Fetch 100 rows of data using the API
