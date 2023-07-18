@@ -4,7 +4,10 @@
 
 This is a mock test.
 The objective of this technical test is to create an application using the provided API: https://randomuser.me/
+
 ![ezgif com-video-to-gif](https://github.com/biccsdev/Mock-Technical-Test-Junior-Web/assets/86041666/687fcaa3-8673-4b8f-9889-5764e0f15647)
+
+Checkout the live version => (https://biccsdev.github.io/Mock-Technical-Test-Junior-Web/)
 
 
 ## Instalation
