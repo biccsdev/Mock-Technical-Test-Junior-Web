@@ -1,5 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SortBy, type User } from "../types.d";
+import { UserDataCard } from "./UserDataCard";
 
 interface Props {
   handleSorting: (sort: SortBy) => void;
@@ -8,16 +9,34 @@ interface Props {
   users: User[];
 }
 
+// interface PropsDataCard {
+//   name: string;
+//   image: string;
+// }
+
 export function UsersList({
   handleSorting,
   deleteUser,
   showColors,
   users,
 }: Props) {
+  const [selectedRow, setSelectedRow] = useState<User>();
+  const [rowSelected, setRowSelected] = useState(false);
+
+  // Handle row click event
+  const handleRowClick = (rowData: User) => {
+    console.log(rowData);
+    setSelectedRow(rowData);
+    setRowSelected(true);
+  };
+
+  const handleClosePopup = () => {
+    setRowSelected(false);
+  };
   useEffect(() => {}, []);
 
   return (
-    <table width="100%">
+    <table width="55%">
       <thead>
         <tr>
           <th>Picture</th>
@@ -36,10 +55,15 @@ export function UsersList({
 
       <tbody>
         {users.map((item, index) => {
-          const backgroundColor = index % 2 == 0 ? "#333" : "#555";
+          const backgroundColor = index % 2 == 0 ? "#40288f" : "#347f83";
           const color = showColors ? backgroundColor : "transparent";
           return (
-            <tr key={item.email} style={{ backgroundColor: color }}>
+            <tr
+              onClick={() => handleRowClick(item)}
+              className="highlight-row"
+              key={item.email}
+              style={{ backgroundColor: color }}
+            >
               <td>
                 <img src={item.picture.thumbnail}></img>
               </td>
@@ -47,11 +71,19 @@ export function UsersList({
               <td>{item.name.last}</td>
               <td>{item.location.country}</td>
               <td>
-                <button onClick={() => deleteUser(item.email)}>Delete</button>
+                <button
+                  className="button"
+                  onClick={() => deleteUser(item.email)}
+                >
+                  DELETE
+                </button>
               </td>
             </tr>
           );
         })}
+        {rowSelected && (
+          <UserDataCard onClose={handleClosePopup} rowData={selectedRow} />
+        )}
       </tbody>
     </table>
   );

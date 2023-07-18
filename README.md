@@ -1,7 +1,10 @@
 # Mock-Technical-Test-Junior-Web
+
 ## Description
-This is a mock test. 
+
+This is a mock test.
 The objective of this technical test is to create an application using the provided API: https://randomuser.me/
+
 ## Requirements
 
 - Fetch 100 rows of data using the API
@@ -15,3 +18,6 @@ The objective of this technical test is to create an application using the provi
 - Avoid sorting users again the data when the user is changing filter by country
 - Sort by clicking on the column header
 - Provide a README.md file with instructions on how to run the application
+- Allow the user to filter the data by name and last name as well as country
+- Highlight the row the cursor is over
+- Display a card with all the user info on click

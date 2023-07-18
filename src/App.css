@@ -3,6 +3,12 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: #6500a3;
+  color: #35d475;
+}
+
+body {
+  background-color: #6500a3;
 }
 
 .logo {
@@ -51,4 +57,42 @@ header {
 
 .pointer {
   cursor: pointer;
+  
+}
+
+.highlight-row {
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.highlight-row:hover {
+  transform: scale(1.1);
+}
+
+table {
+  margin: 0 auto;
+}
+
+.button {
+  color: #40288f;
+  background-color: #39d05c;
+}
+
+.button::placeholder {
+  color: #40288f;
+}
+
+.popup-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5%;
 }

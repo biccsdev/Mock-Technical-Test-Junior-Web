@@ -7,7 +7,7 @@ function App() {
   const [users, setUsers] = useState<User[]>([]);
   const [showColors, setColors] = useState(false);
   const [sorting, setSorting] = useState<SortBy>(SortBy.NONE);
-  const [filterCountry, setFilterCountry] = useState<string | null>(null);
+  const [filter, setFilter] = useState<string | null>(null);
   const dataRestore = useRef<User[]>([]);
 
   const toggleColors = () => {
@@ -25,14 +25,35 @@ function App() {
   };
 
   const filteredUsers = useMemo(() => {
-    return filterCountry != null && filterCountry.length > 0
+    return filter != null && filter.length > 0
       ? users.filter((user) => {
-          return user.location.country
-            .toLowerCase()
-            .includes(filterCountry.toLowerCase());
+          if (
+            user.location.country
+              .toLocaleLowerCase()
+              .includes(filter.toLocaleLowerCase())
+          ) {
+            return true;
+          }
+          if (
+            user.name.first
+              .toLocaleLowerCase()
+              .includes(filter.toLocaleLowerCase())
+          ) {
+            return true;
+          }
+          if (
+            user.name.last
+              .toLocaleLowerCase()
+              .includes(filter.toLocaleLowerCase())
+          ) {
+            return true;
+          }
+          // return user.location.country
+          //   .toLowerCase()
+          //   .includes(filter.toLowerCase());
         })
       : users;
-  }, [users, filterCountry]);
+  }, [users, filter]);
 
   const sortedUsers = useMemo(() => {
     switch (sorting) {
@@ -83,14 +104,19 @@ function App() {
     <div>
       <h1>User's Data</h1>
       <header>
-        <button onClick={toggleColors}>Color Rows</button>
-        <button onClick={toggleSortByCountry}>
+        <button className="button" onClick={toggleColors}>
+          Color Rows
+        </button>
+        <button className="button" onClick={toggleSortByCountry}>
           {sorting === SortBy.COUNTRY ? "Restore Sort" : "Sort by Country"}
         </button>
-        <button onClick={toggleDataRestore}>Restore Data</button>
+        <button className="button" onClick={toggleDataRestore}>
+          Restore Data
+        </button>
         <input
+          className="button"
           onChange={(e) => {
-            setFilterCountry(e.target.value);
+            setFilter(e.target.value);
           }}
           placeholder="filter by country..."
         ></input>
